@@ -5,12 +5,11 @@ from datetime import datetime
 PROJECT_FILE = "project.json"  # Subject to change
 
 # Create a project
-def createProject(projectID, name, target, methods):
+def createProject(projectID, name, target):
     projectData = {
         "id": projectID,
         "projectName": name,
         "target": target,
-        "methods": methods,
         "results": [],
         "logs": [],
         "createAt": datetime.utcnow().isoformat() + "Z",
