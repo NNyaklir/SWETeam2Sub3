@@ -40,7 +40,8 @@
 			<div class="sidebar-section">
 				<button
 					class:active-icon={active === "projects"}
-					on:click={() => (active = "projects")}
+					
+					on:click={() => { active = "projects"; window.location.href = "/project-dashboard"; }}
 					title="Projects"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
