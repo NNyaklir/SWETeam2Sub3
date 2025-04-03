@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.analyst_routes import router as analyst_router
 from api.project_routes import router as project_router
+from api.crawler_routes import router as crawler_router
+from api.ai_routes import router as ai_router
 
 # from api.test_routes import router as test_router
 
@@ -17,45 +19,16 @@ app.add_middleware(
     allow_headers=["*"],
 ) 
 
+#Team2
+# Prefix all project routes with /api/project
 app.include_router(project_router, prefix="/api/projects")
-
 # Prefix all analyst routes with /api/analyst
 app.include_router(analyst_router, prefix="/api/analyst")
 
+# Team11
+# Prefix all crawler routes with /api/crawler
+app.include_router(crawler_router, prefix="/api/cralwer")
+# Prefix all ai routes with /api/ai
+app.include_router(ai_router, prefix="/api/ai")
 
 
-# from projectManager.projectManager import ProjectManager
-
-# p = ProjectManager()
-# ips = [
-#     "192.168.1.10",
-#     "192.168.1.15",
-#     "10.0.0.5",
-#     "172.16.0.3"
-# ]
-# ports = [
-#     "20", 
-#     "81",   
-#     "423",  
-#     "3306"  
-# ]
-
-# p.createProject("Test demo","testing project 3  ","SL", ips, ports)
-# id = "4:9b85307e-5220-4f24-9712-4a463db95510:0"
-
-# project = p.loadProject(id)
-
-# print(vars(project))
-
-# print(project.getIps())
-
-# projectList = p.show_existing_projects()
-# for project in projectList:
-#     print("ID:", project["id"])
-#     print("Name:", project["name"])
-#     print("Owner:", project["owner"])
-#     print("Timestamp:", project["timestamp"])
-#     print("Status:", project["status"])
-#     print("Lock Status:", project["lockStatus"])
-#     print("Description:", project["description"])
-#     print("-" * 40)
